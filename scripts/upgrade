@@ -232,7 +232,7 @@ chown root: $final_path/wp-config.php
 ynh_script_progression --message="Reconfiguring fail2ban..." --weight=9
 
 # Create a dedicated fail2ban config
-ynh_add_fail2ban_config --logpath="/var/log/auth.log" --failregex="Authentication (attempt for unknown user|failure for) .* from <HOST>" --max_retry=5
+ynh_add_fail2ban_config --logpath="/var/log/auth.log" --failregex="^sAuthentication failure for .* from <HOST>$\n^sREST authentication failure for .* from <HOST>$\n^sXML-RPC authentication failure for .* from <HOST>$" --max_retry=5
 
 #=================================================
 # SETUP SSOWAT
